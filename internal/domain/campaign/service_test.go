@@ -2,6 +2,7 @@ package campaign
 
 import (
 	"emailln/internal/contract"
+	internalerrors "emailln/internal/internalErrors"
 	"errors"
 	"testing"
 
@@ -29,7 +30,7 @@ var (
 
 func Test_Create_Campaign(t *testing.T) {
 	assert := assert.New(t)
-	
+
 	id, err := service.Create(newCampaign)
 
 	assert.NotNil(id)
@@ -39,7 +40,7 @@ func Test_Create_Campaign(t *testing.T) {
 func Test_Create_ValidateDomainError(t *testing.T) {
 	assert := assert.New(t)
 	newCampaign.Name = ""
-	
+
 	_, err := service.Create(newCampaign)
 
 	assert.NotNil(err)
@@ -73,5 +74,5 @@ func Test_Create_ValidateRepositorySave(t *testing.T) {
 
 	_, err := service.Create(newCampaign)
 
-	assert.Equal("error to save on database", err.Error())
+	assert.True(errors.Is(internalerrors.ErrInternal, err))
 }
