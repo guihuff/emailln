@@ -25,11 +25,9 @@ func main() {
 		CampaignService: campaignService,
 	}
 
-	r.Post("/campaigns", handler.CampaignPost)
-	r.Get("/campaigns", handler.CampaignGet)
+	r.Post("/campaigns", endpoints.HandlerError(handler.CampaignPost))
+	r.Get("/campaigns", endpoints.HandlerError(handler.CampaignGet))
 
-
-	println("Porta: 3000")
 	http.ListenAndServe(":3000", r)
 
 }

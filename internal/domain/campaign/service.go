@@ -22,7 +22,5 @@ func (s *Service) Create(newCampaign contract.NewCampaign) (string, error) {
 		return "", internalerrors.ErrInternal
 	}
 
-	s.Repository.Save(campaign)
-
 	return campaign.ID, nil
 }
