@@ -1,0 +1,6 @@
+go-chi
+validator
+faker
+xid
+testify
+gorm
