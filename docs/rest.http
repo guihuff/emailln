@@ -12,4 +12,4 @@ POST http://localhost:3000/campaigns
 
 ###
 
-GET http://localhost:3000/campaigns
+GET http://localhost:3000/campaigns/cis08o8tnqe65va94bl0
