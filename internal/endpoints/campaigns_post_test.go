@@ -22,6 +22,11 @@ func (r *serviceMock) Create(newCampaign contract.NewCampaign) (string, error) {
 	return args.String(0), args.Error(1)
 }
 
+func (r *serviceMock) GetBy(id string) (*contract.CampaignResponse, error) {
+	// args := r.Called(id)
+	return nil, nil
+}
+
 var (
 	body = contract.NewCampaign{
 		Name:    "teste",
