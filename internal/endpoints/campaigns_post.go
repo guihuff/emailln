@@ -7,7 +7,7 @@ import (
 	"github.com/go-chi/render"
 )
 
-func (h *Hendler) CampaignPost(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
+func (h *Handler) CampaignPost(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
 	var request contract.NewCampaign
 	render.DecodeJSON(r.Body, &request)
 

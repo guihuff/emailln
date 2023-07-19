@@ -2,7 +2,7 @@ package endpoints
 
 import "emailln/internal/domain/campaign"
 
-type Hendler struct {
+type Handler struct {
 	CampaignService campaign.Service
 }
 
