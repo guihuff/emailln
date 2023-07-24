@@ -13,3 +13,8 @@ POST http://localhost:3000/campaigns
 ###
 
 GET http://localhost:3000/campaigns/civ96cm7hj3ehbjvqbeg
+
+###
+
+PATCH http://localhost:3000/campaigns/cancel/civ96cm7hj3ehbjvqbeg
+
