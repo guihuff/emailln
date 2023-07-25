@@ -16,8 +16,8 @@ GET http://localhost:3000/campaigns/civape7hj3a45k0667g
 
 ###
 
-PATCH http://localhost:3000/campaigns/cancel/civ96cm7hj3ehbjvqbeg
+PATCH http://localhost:3000/campaigns/cancel/civ96cm7hj3ehbjveg
 
 ###
 
-DELETE http://localhost:3000/campaigns/delete/civah7e7hj3bj4f1e32g
+DELETE http://localhost:3000/campaigns/delete/civah7e7j3bj4f1e32g
