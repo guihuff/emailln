@@ -8,7 +8,10 @@ import (
 
 // GET /campaigns/{id}
 func (h *Handler) CampaignGetById(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
-	paramId	:= chi.URLParam(r, "id")
+	paramId := chi.URLParam(r, "id")
 	campaign, err := h.CampaignService.GetBy(paramId)
+	if err == nil && campaign == nil {
+		return nil, http.StatusNotFound, err
+	}
 	return campaign, 200, err
 }
