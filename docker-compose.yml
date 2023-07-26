@@ -19,5 +19,18 @@ services:
       options:
         max-size: "50m"
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN_PASSWORD: ${KC_PASSWORD}
+      KEYCLOAK_ADMIN: ${KC_USER}
+    ports:
+      - "${KC_PORT}:8080"
+    command: start-dev
+  
+
+
+
 volumes:
   emailln-go:
