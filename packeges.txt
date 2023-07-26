@@ -5,3 +5,4 @@ xid
 testify
 gorm
 oidc
+dgrijalva/jwt-go

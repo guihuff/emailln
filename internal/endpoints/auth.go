@@ -1,10 +1,12 @@
 package endpoints
 
 import (
+	"context"
 	"net/http"
 	"strings"
 
 	oidc "github.com/coreos/go-oidc/v3/oidc"
+	jwtgo "github.com/dgrijalva/jwt-go"
 	"github.com/go-chi/render"
 )
 
@@ -36,6 +38,12 @@ func Auth(next http.Handler) http.Handler {
 			return
 		}
 
-		next.ServeHTTP(w, r)
+		tokenJWT, _ := jwtgo.Parse(token, nil)
+		claims := tokenJWT.Claims.(jwtgo.MapClaims)
+		email := claims["email"]
+
+		ctx := context.WithValue(r.Context(), "email", email)
+
+		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
