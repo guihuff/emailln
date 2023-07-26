@@ -3,6 +3,7 @@ GET http://localhost:3000/
 ###
 
 POST http://localhost:3000/campaigns
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3QkVlR29IcVR0YVpseE9IWTJPTW5Rbnh1SVBkcUg1T0FMdzFURHI3ODVBIn0.eyJleHAiOjE2OTAzNzg4MjIsImlhdCI6MTY5MDM3ODUyMiwianRpIjoiMGExOGY0MmQtOTMzZC00ZDM0LWFiOTItYjBiZDI0NDEzN2RkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9wcm92aWRld2l0aGdvIiwiYXVkIjoiZW1haWxsbiIsInN1YiI6IjMwZmMyZTE1LTdkOTgtNDc1Mi1hNzBkLTc3NTZmMzhiODE3OSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImVtYWlsbG4iLCJzZXNzaW9uX3N0YXRlIjoiYmQxNzYzNjMtNWFiYi00ZWEyLWI1YmMtMzEwMTkyYTE2ZmRmIiwic2NvcGUiOiIiLCJzaWQiOiJiZDE3NjM2My01YWJiLTRlYTItYjViYy0zMTAxOTJhMTZmZGYifQ.gQCt3PEWiKr5mvdzxPyZSR0agm2PtLEXBpjLCMejuURyzMFja1p8hPg37d9xy3oSzlVXVSbX832kOTWf0bvU1RG2AKeoK9sZJ9IZUW4in6n1tab0OZEo7c3d7K6sS8zQY3WkLeDpdfNUjnYjTdZeLVyxvQWdN2-WlTLuDBfe7NMpqiPC8fumfc_NUy6zPZhU-4-aBDl1xCTRptWrcCsKt5iRXy7FcIZ_6HnVl20F8ui-dLnjlEbIjTqJJksv96Yg7SmKxIerZBFUKsUsm6kdErDOli6sspLV2uR8EvjltdxFzh-peO-xL_8xce8WB_sPzMrbq21O3QeilHdX5LijJw
 
 {
   "Name": "change 4",
@@ -17,3 +18,15 @@ GET http://localhost:3000/campaigns/civape7hj3a45k0667g
 ###
 
 DELETE http://localhost:3000/campaigns/delete/civah7e7j3bj4f1e32g
+
+###
+POST http://localhost:8080/realms/providewithgo/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailln&username=guira2002@gmail.com&password=123456&grant_type=password
+
+###
+POST http://localhost:8080/realms/providewithgo/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailln_users&username=guira2002@gmail.com&password=123456&grant_type=password
