@@ -18,6 +18,7 @@ var (
 		Name:    "Test Y",
 		Content: "Body Hi",
 		Emails:  []string{"email@e.com"},
+		CreatedBy: "teste@created.com.br",
 	}
 	service = campaign.ServiceImp{}
 )
@@ -75,12 +76,11 @@ func Test_Create_ValidateRepositorySave(t *testing.T) {
 func Test_GetById_ReturnCampaign(t *testing.T) {
 	assert := assert.New(t)
 
-	//TODO: fixed arg email
 	campaign, _ := campaign.NewCampaign(
 		newCampaign.Name,
 		newCampaign.Content,
 		newCampaign.Emails,
-		"",
+		newCampaign.CreatedBy,
 	)
 
 	repositoryMock := new(internalmock.CampaignRepositoryMock)
@@ -95,18 +95,18 @@ func Test_GetById_ReturnCampaign(t *testing.T) {
 	assert.Equal(campaign.Name, campaignReturned.Name)
 	assert.Equal(campaign.Content, campaignReturned.Content)
 	assert.Equal(campaign.Status, campaignReturned.Status)
+	assert.Equal(campaign.CreatedBy, campaignReturned.CreatedBy)
 
 }
 
 func Test_GetById_ReturnErrorWhenSomethingWrongExist(t *testing.T) {
 	assert := assert.New(t)
   
-	//TODO: fixed arg email
 	campaign, _ := campaign.NewCampaign(
 		newCampaign.Name,
 		newCampaign.Content,
 		newCampaign.Emails,
-		"",
+		newCampaign.CreatedBy,
 	)
 
 	repositoryMock := new(internalmock.CampaignRepositoryMock)
@@ -166,9 +166,8 @@ func Test_Delete_ReturnStatusInvalid_when_campaign_status_not_equals_pending(t *
 func Test_Delete_ReturnInternalError_when_delete_has_problem(t *testing.T) {
 	assert := assert.New(t)
 
-	//TODO: fixed arg email
 	campaignFound, _ := campaign.NewCampaign(
-		"Teste Delete", "Body test delete", []string{"teste@t.com"}, "",
+		"Teste Delete", "Body test delete", []string{"teste@t.com"}, newCampaign.CreatedBy,
 	)
 	repositoryMock := new(internalmock.CampaignRepositoryMock)
 	repositoryMock.On("GetBy", mock.Anything).Return(campaignFound, nil)
@@ -189,7 +188,7 @@ func Test_Delete_ReturnNil_when_delete_has_sucess(t *testing.T) {
   
 	//TODO: fixed arg email
 	campaignFound, _ := campaign.NewCampaign(
-		"Teste Delete", "Body test delete", []string{"teste@t.com"}, "",
+		"Teste Delete", "Body test delete", []string{"teste@t.com"}, newCampaign.CreatedBy,
 	)
 	repositoryMock := new(internalmock.CampaignRepositoryMock)
 	repositoryMock.On("GetBy", mock.Anything).Return(campaignFound, nil)
