@@ -1,0 +1,46 @@
+@url = http://localhost:3000
+@identity_provider = http://localhost:8080
+
+
+###
+
+GET {{url}}/ping
+
+###
+
+POST {{url}}/campaigns
+Authorization: Bearer {{acess_token}}
+
+{
+  "Name": "change 4",
+  "Content": "change password",
+  "emails": ["teste@t.com", "teste2@t.com"]
+}
+
+###
+
+GET {{url}}/campaigns/civape7hj3a45k0667g
+Authorization: Bearer {{acess_token}}
+
+###
+
+DELETE {{url}}/campaigns/delete/civah7e7j3bj4f1e32g
+Authorization: Bearer {{acess_token}}
+
+###
+# @name token
+POST {{identity_provider}}/realms/providewithgo/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailln&username=guira2002@gmail.com&password=123456&grant_type=password
+
+###
+
+@acess_token = {{token.response.body.access_token}}
+
+
+###
+POST {{identity_provider}}/realms/providewithgo/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailln_users&username=guira2002@gmail.com&password=123456&grant_type=password

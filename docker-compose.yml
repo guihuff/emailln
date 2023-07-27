@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  db-postgres:
+    image: postgres:14-alpine
+    container_name: db-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      PGDATA: /data/postgres
+    volumes:
+      - emailln-go:/data/postgres
+    ports:
+      - "${DB_PORT}:5432"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN_PASSWORD: ${KC_PASSWORD}
+      KEYCLOAK_ADMIN: ${KC_USER}
+    ports:
+      - "${KC_PORT}:8080"
+    command: start-dev
+  
+
+
+
+volumes:
+  emailln-go:
