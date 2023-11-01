@@ -1,4 +1,4 @@
-@url = http://localhost:3000
+@url = http://localhost:1337
 @identity_provider = http://localhost:8080
 
 

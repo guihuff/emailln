@@ -16,9 +16,9 @@ import (
 
 func main() {
 	err := godotenv.Load()
-  if err != nil {
-    log.Fatal("Error loading .env file")
-  }
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	r := chi.NewRouter()
 
@@ -47,6 +47,7 @@ func main() {
 		r.Delete("/delete/{id}", endpoints.HandlerError(handler.CampaignDelete))
 	})
 
-	http.ListenAndServe(os.Getenv("API_PORT"), r)
+	log.Print("API listening port: " + os.Getenv("API_PORT"))
+	http.ListenAndServe(":"+os.Getenv("API_PORT"), r)
 
 }
