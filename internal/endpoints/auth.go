@@ -3,6 +3,7 @@ package endpoints
 import (
 	"context"
 	"net/http"
+	"os"
 	"strings"
 
 	oidc "github.com/coreos/go-oidc/v3/oidc"
@@ -22,7 +23,7 @@ func Auth(next http.Handler) http.Handler {
 
 		token = strings.Replace(token, "Bearer ", "", 1)
 
-		provider, err := oidc.NewProvider(r.Context(), "http://localhost:8080/realms/providewithgo")
+		provider, err := oidc.NewProvider(r.Context(), os.Getenv("KC_URL"))
 
 		if err != nil {
 			render.Status(r, 500)
