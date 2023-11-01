@@ -1,19 +1,25 @@
 package mail
 
 import (
+	"emailln/internal/domain/campaign"
 	"os"
 
 	"gopkg.in/gomail.v2"
 )
 
-func SendMail() error {
+func SendMail(campaign *campaign.Campaign) error {
 	d := gomail.NewDialer(os.Getenv("EMAIL_SMTP"), 587, os.Getenv("EMAIL_USER"), os.Getenv("EMAIL_PASSWORD"))
+
+	var emails []string
+	for _, contact := range campaign.Contacts {
+		emails = append(emails, contact.Email)
+	}
 
 	m := gomail.NewMessage()
 	m.SetHeader("From", os.Getenv("EMAIL_USER"))
-	m.SetHeader("To", "guira2002@gmail.com")
-	m.SetHeader("Subject", "Hello! Emailln")
-	m.SetBody("text/html", "Olá Usuário aqui é o <b>Emailln</b>!")
+	m.SetHeader("To", emails...)
+	m.SetHeader("Subject", campaign.Name)
+	m.SetBody("text/html", campaign.Content)
 
 	return d.DialAndSend(m)
 }
